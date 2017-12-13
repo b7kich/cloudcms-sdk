@@ -3,7 +3,19 @@
 namespace Idealley\CloudCmsSDK\Repository;
 
 class Node extends Repository{
-     
+
+    /**
+     * Create a document. You need to pass the whole document as you want it to be as a payload 
+     * 
+     * @return 
+     */
+     public function create($payload){
+          $this->method = 'POST';
+          $this->payload = $payload;
+          $this->request = $this->baseUrl.'/repositories/'.$this->repositoryId.'/branches/'.$this->branch.'/nodes';
+          return $this;
+     }
+	
     /**
      * Update a document. You need to pass the whole document as you want it to be as a payload 
      * If some properties are misssing, they will be ereased (not the system one)
